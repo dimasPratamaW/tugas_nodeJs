@@ -1,5 +1,7 @@
-const { sequelize } = require("./Database");
+// DataBaseAppsUtils.js
 
-const Database = sequelize;
+// Import the sequelize instance
+const sequelize = require("./Database");
 
-module.exports = { Database };
+// Export the sequelize instance as Database
+module.exports = { Database: sequelize };

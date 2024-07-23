@@ -10,7 +10,6 @@ router_product.post("/product", addProduct);
 router_product.get("/product/:id", getProductDetail);
 router_product.put("/product/:id", updateProduct);
 router_product.delete("/product/:id", deleteProduct);
-router_product.get("/product/allproduct/:id", getAllProduct);
 
 
 async function addProduct(req, res, next) {

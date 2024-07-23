@@ -1,26 +1,27 @@
+// server.js
+
 require("dotenv").config();
 const express = require("express");
 const session = require('express-session');
 const cors = require("cors");
-const { sequelize } = require("./Database");
+const sequelize = require("./Database"); // Import sequelize correctly
 const ProductRouter = require("./productRouter");
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ origin: true, credentials: true }))
+app.use(cors({ origin: true, credentials: true }));
 
 app.use(session({
-    secret: 'sekret', // Ganti ini dengan kunci rahasia yang lebih aman di produksi
+    secret: 'sekret', // Use a more secure secret in production
     resave: false,
     saveUninitialized: false
 }));
 
-
 app.use("/api/v1", ProductRouter);
 
-
+// Authenticate sequelize connection
 sequelize
     .authenticate()
     .then(() => {
